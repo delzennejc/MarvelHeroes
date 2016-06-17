@@ -1,6 +1,9 @@
+var webpack = require('webpack');
+
 module.exports = {
   entry: [
-    './src/index.js'
+    './src/index.js',
+    'webpack-dev-server/client?http://localhost:8080',
   ],
   output: {
     path: __dirname,
@@ -14,6 +17,10 @@ module.exports = {
       query: {
         presets: ['react', 'es2015', 'stage-1']
       }
+    },
+    {
+      test: /\.css$/,
+      loaders: ['style', 'css']
     }]
   },
   resolve: {
@@ -22,5 +29,8 @@ module.exports = {
   devServer: {
     historyApiFallback: true,
     contentBase: './'
-  }
+  },
+  plugins: [
+    new webpack.HotModuleReplacementPlugin()
+  ],
 };

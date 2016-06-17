@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 class Index extends Component {
   render(){
     return (
-      <div>React Redux Boilerplate</div>
+      <div>React Redux Boilerplates</div>
     )
   }
 };
