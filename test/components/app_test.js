@@ -9,6 +9,7 @@ describe('App' , () => {
   });
 
   it('renders something', () => {
-    expect(component).to.exist;
+    expect(component).to.contain('Hello World');
   });
+
 });
