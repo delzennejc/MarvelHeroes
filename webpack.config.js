@@ -1,6 +1,8 @@
 var webpack = require('webpack');
 
 module.exports = {
+  debug: true,
+  devtool: 'source-map',
   entry: [
     './src/index.js',
     'webpack-dev-server/client?http://localhost:8080',
