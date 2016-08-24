@@ -7,7 +7,7 @@
   "scripts": {
     "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
     "test": "ava",
-    "tdd": "ava -w",
+    "tdd": "ava -w"
   },
   "author": "",
   "license": "ISC",
