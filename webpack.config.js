@@ -5,15 +5,7 @@ var devFlagPlugin = new webpack.DefinePlugin({
     __DEV__: JSON.stringify(JSON.parse(process.env.DEBUG || 'false'))
 });
 
-var precss       = require('precss');
-var autoprefixer = require('autoprefixer');
-var postImport   = require('postcss-import');
-var postUrl      = require('postcss-url');
-var postCssNext  = require('postcss-cssnext');
-var postBrowser  = require('postcss-browser-reporter');
-var postReporter = require('postcss-reporter');
-
-console.log("listen to http://localhost:8080");
+console.log("listen to http://localhost:8080\n\n");
 
 module.exports = {
   debug: true,
