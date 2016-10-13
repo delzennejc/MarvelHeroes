@@ -1,9 +1,8 @@
 {
-  "name": "React-redux-boilerplate",
+  "name": "MarvelHeroes",
   "version": "1.0.0",
-  "description": "Boilerplate for quickstart a React Redux project with Babel and Webpack",
+  "description": "List of marvel heroes",
   "main": "index.js",
-  "repository": "git@github.com:Prattjames/ReactReduxBoilerplate.git",
   "scripts": {
     "start": "node server.js",
     "dev": "DEBUG=true NODE_ENV=development node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",

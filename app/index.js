@@ -9,7 +9,9 @@ import rootReducer from './reducers';
 
 const createStoreWithMiddleware = createStore(
   rootReducer,
-  window.devToolsExtension ? window.devToolsExtension() : f => f,
+  (__DEV__) // eslint-disable-line
+  ? window.devToolsExtension ? window.devToolsExtension() : f => f
+  : {},
   applyMiddleware(thunk)
 );
 

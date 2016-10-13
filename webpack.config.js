@@ -2,10 +2,6 @@
 var webpack = require('webpack');
 var path = require('path');
 
-var devFlagPlugin = new webpack.DefinePlugin({
-    __DEV__: JSON.stringify(JSON.parse(process.env.DEBUG || 'false'))
-});
-
 console.log("listen to http://localhost:8080\n\n");
 
 module.exports = {
@@ -51,6 +47,8 @@ module.exports = {
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
-    devFlagPlugin,
+    new webpack.DefinePlugin({
+        __DEV__: JSON.stringify(JSON.parse('true'))
+    }),
   ],
 };
