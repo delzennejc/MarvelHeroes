@@ -1,6 +1,7 @@
 import React, { PropTypes, PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
+import get from 'lodash/get';
 import {
   fetchAllCharacters,
 } from '../../api/fetch';
@@ -8,7 +9,18 @@ import {
 export class App extends PureComponent {
 
   componentWillMount() {
-    this.props.fetchCharacters();
+    if (get(this.props.location, 'query.page')) {
+      this.props.fetchCharacters(+this.props.location.query.page);
+    } else {
+      this.props.fetchCharacters();
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (get(nextProps.location, 'query.page')) {
+      nextProps.fetchCharacters(+nextProps.location.query.page);
+    }
+    window.scrollTo(0, 0);
   }
 
   render() {

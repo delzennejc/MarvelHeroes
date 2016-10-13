@@ -15,6 +15,7 @@ const createStoreWithMiddleware = createStore(
   applyMiddleware(thunk)
 );
 
+
 (() => {
   if ('serviceWorker' in navigator) {
     // caching

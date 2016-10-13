@@ -13,13 +13,17 @@ import {
   getCharacter,
 } from '../actions/act_characters';
 
-export const fetchAllCharacters = (offset = 0) =>
-  dispatch =>
-    instanceAPI.get(
+export const currentOffset = 20;
+
+export const fetchAllCharacters = (page = 0) =>
+  dispatch => {
+    const offset = (page) ? (page - 1) * currentOffset : 0;
+    return instanceAPI.get(
       `${CHARACTERS_API}?ts=${timeStampsNow()}&apikey=${PUBLIC_API}&hash=${getHash()}&offset=${offset}` // eslint-disable-line
     )
     .then(res => dispatch(getCharacters(res.data.data)))
     .catch(err => console.error(err));
+  };
 
 export const fetchOneCharacter = (id) =>
   dispatch =>
