@@ -7,7 +7,7 @@
     "start": "node server.js",
     "dev": "DEBUG=true NODE_ENV=development node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
     "build": "NODE_ENV=production webpack -p --config ./webpack.prod.config.js",
-    "test": "ava",
+    "test": "ava --tap | tap-nyan",
     "tdd": "ava -w"
   },
   "author": "",
