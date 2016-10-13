@@ -1,13 +1,44 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 
-import App from './components/App';
-import Body from './containers/Body';
-import NotFound from './components/NotFound';
+// shim for node.js
+if (typeof module !== 'undefined' && module.require) {
+  if (typeof require.ensure === 'undefined') {
+    require.ensure = require('node-ensure'); // eslint-disable-line
+  }
+}
 
 export default (
-  <Route path="/" component={App}>
-    <IndexRoute component={Body} />
-    <Route path="*" component={NotFound} />
+  <Route
+    path="/"
+    getComponent={(location, callback) => {
+      require.ensure([], require => {
+        callback(null, require('./containers/App').default, 'App');
+      });
+    }}
+  >
+    <IndexRoute
+      getComponent={(location, callback) => {
+        require.ensure([], require => {
+          callback(null, require('./containers/CharactersList').default, 'CharactersList');
+        });
+      }}
+    />
+    <Route
+      path="/character/:id"
+      getComponent={(location, callback) => {
+        require.ensure([], require => {
+          callback(null, require('./containers/Character').default, 'Character');
+        });
+      }}
+    />
+    <Route
+      path="*"
+      getComponent={(location, callback) => {
+        require.ensure([], require => {
+          callback(null, require('./components/NotFound').default, 'NotFound');
+        });
+      }}
+    />
   </Route>
 );

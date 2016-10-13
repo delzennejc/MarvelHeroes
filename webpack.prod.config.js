@@ -1,22 +1,17 @@
 /*eslint-disable*/
-var webpack = require('webpack');
 var path = require('path');
+var webpack = require('webpack');
+var SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
 
-var devFlagPlugin = new webpack.DefinePlugin({
-    __DEV__: JSON.stringify(JSON.parse(process.env.DEBUG || 'false'))
-});
-
-console.log("listen to http://localhost:8080\n\n");
+console.log("Compiling for production...", path.resolve(__dirname, 'dist/'));
 
 module.exports = {
-  debug: true,
-  devtool: 'source-map',
+  context: __dirname,
   eslint: {
     configFile: '.eslintrc',
   },
   entry: [
     './app/index.js',
-    'webpack-dev-server/client?http://localhost:8080',
   ],
   output: {
     path: path.resolve(__dirname, 'dist/'),
@@ -44,13 +39,18 @@ module.exports = {
   resolve: {
     extensions: ['', '.js', '.jsx']
   },
-  devServer: {
-    historyApiFallback: true,
-    contentBase: './dist'
-  },
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin(),
-    devFlagPlugin,
+    new webpack.DefinePlugin({
+        'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
+    }),
+    new webpack.optimize.UglifyJsPlugin({
+      compress: { warnings: false }
+    }),
+    new SWPrecacheWebpackPlugin(
+      {
+        cacheId: "marvelHeroes",
+        filename: "marvelHeroes.service-worker.js",
+      }
+    ),
   ],
 };

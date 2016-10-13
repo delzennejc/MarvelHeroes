@@ -5,7 +5,9 @@
   "main": "index.js",
   "repository": "git@github.com:Prattjames/ReactReduxBoilerplate.git",
   "scripts": {
-    "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
+    "start": "node server.js",
+    "dev": "DEBUG=true NODE_ENV=development node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
+    "build": "NODE_ENV=production webpack -p --config ./webpack.prod.config.js",
     "test": "ava",
     "tdd": "ava -w"
   },
@@ -27,23 +29,33 @@
     "eslint-plugin-jsx": "0.0.2",
     "eslint-plugin-jsx-a11y": "^2.1.0",
     "eslint-plugin-react": "^6.1.2",
+    "ignore-styles": "^5.0.1",
+    "image-webpack-loader": "^2.0.0",
     "jsdom": "^8.1.0",
     "less": "^2.7.1",
     "less-loader": "^2.2.3",
+    "node-ensure": "0.0.0",
     "react-addons-test-utils": "^0.14.8",
     "react-hot-loader": "^1.3.0",
+    "redux-devtools": "^3.3.1",
+    "sw-precache-webpack-plugin": "^0.5.1",
     "webpack": "^1.12.9",
     "webpack-dev-server": "^1.14.0"
   },
   "dependencies": {
+    "axios": "^0.15.0",
     "babel-preset-stage-1": "^6.1.18",
+    "crypto-md5": "^1.0.0",
     "css-loader": "^0.23.1",
-    "lodash": "^3.10.1",
-    "react": "^0.14.3",
-    "react-dom": "^0.14.3",
+    "lodash": "^4.16",
+    "qs": "^6.2.1",
+    "react": "^15.3",
+    "react-background-image-loader": "0.0.1",
+    "react-dom": "^15.3",
     "react-redux": "^4.0.0",
     "react-router": "^2.4.1",
     "redux": "^3.0.4",
+    "redux-thunk": "^2.1.0",
     "style-loader": "^0.13.1"
   },
   "ava": {
@@ -52,7 +64,8 @@
     ],
     "require": [
       "babel-register",
-      "./test_helper.js"
+      "./test_helper.js",
+      "ignore-styles"
     ],
     "babel": "inherit"
   }

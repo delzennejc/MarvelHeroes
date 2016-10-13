@@ -1,0 +1,50 @@
+
+.character_infos {
+  display: flex;
+  margin-left: 20px;
+  margin-right: 20px;
+
+  &__image {
+    width: 25%;
+    height: 300px;
+    background-size: cover;
+  }
+  &__infos {
+    width: 75%;
+    padding-left: 30px;
+
+    &__header {
+      border: 1px solid gray;
+      padding: 10px;
+      border-radius: 5px;
+      margin-bottom: 15px;
+
+      .header__title {
+        display: block;
+        font-size: 23px;
+        margin-bottom: 10px;
+      }
+    }
+
+    &__books {
+      .books__title {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+
+      .books__comics {
+        margin-bottom: 30px;
+      }
+
+      .books__line {
+        display: block;
+        border-bottom: 1px solid gray;
+
+        &:first-child {
+          border-top: 1px solid gray;
+        }
+      }
+    }
+  }
+}
