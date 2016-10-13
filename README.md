@@ -29,4 +29,4 @@ Clone this repo, install dependencies, then start with the following:
 ```
 
 To test you can run ```> npm test``` or to use it in TDD ```> npm run tdd```.
-To run in developpement with webpack-dev-server  ```> npm run dev``` (Don't forget to clean chrome cache first, if you had already run it in production mode, because of service workers)
+To run in developpement with webpack-dev-server  ```> npm run dev```
